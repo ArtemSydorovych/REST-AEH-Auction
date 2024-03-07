@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Startup", "Auction.Startup\Auction.Startup.csproj", "{13B234D7-A34B-4FCE-81F1-207B136E0606}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auction", "Auction", "{CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Application", "Auction.Application\Auction.Application.csproj", "{589DF867-A218-4F34-8756-67A199709719}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Infrastructure", "Auction.Infrastructure\Auction.Infrastructure.csproj", "{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Api", "Auction.Api\Auction.Api.csproj", "{125A011E-AA5D-445C-B41C-133256BE40BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Domain", "Auction.Domain\Auction.Domain.csproj", "{92878546-6985-40A2-A1EB-FBD807AD014D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{83C983A8-BC6E-499B-9CDF-05FB98FFDDCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13B234D7-A34B-4FCE-81F1-207B136E0606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13B234D7-A34B-4FCE-81F1-207B136E0606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13B234D7-A34B-4FCE-81F1-207B136E0606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13B234D7-A34B-4FCE-81F1-207B136E0606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589DF867-A218-4F34-8756-67A199709719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589DF867-A218-4F34-8756-67A199709719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589DF867-A218-4F34-8756-67A199709719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589DF867-A218-4F34-8756-67A199709719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125A011E-AA5D-445C-B41C-133256BE40BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125A011E-AA5D-445C-B41C-133256BE40BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125A011E-AA5D-445C-B41C-133256BE40BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125A011E-AA5D-445C-B41C-133256BE40BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92878546-6985-40A2-A1EB-FBD807AD014D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92878546-6985-40A2-A1EB-FBD807AD014D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92878546-6985-40A2-A1EB-FBD807AD014D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92878546-6985-40A2-A1EB-FBD807AD014D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{13B234D7-A34B-4FCE-81F1-207B136E0606} = {CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}
+		{589DF867-A218-4F34-8756-67A199709719} = {CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}
+		{68D7C610-DFD1-4AA3-9FD2-A766E16D7DBC} = {CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}
+		{125A011E-AA5D-445C-B41C-133256BE40BC} = {CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}
+		{92878546-6985-40A2-A1EB-FBD807AD014D} = {CE8C57B2-30EC-4FED-AAFD-42DBA9023DA7}
+	EndGlobalSection
+EndGlobal
