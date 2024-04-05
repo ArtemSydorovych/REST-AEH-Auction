@@ -11,8 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Auction.Api\Auction.Api.csproj" />
       <ProjectReference Include="..\Auction.Domain\Auction.Domain.csproj" />
     </ItemGroup>
-
 </Project>

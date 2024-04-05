@@ -1,42 +1,34 @@
-﻿using AuctionDomain.Entities;
+﻿using Auction.Infrastructure.Persistence.Postgres.DbContexts;
+using AuctionDomain.Entities;
 using AuctionDomain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Auction.Infrastructure.Repositories;
 
-public class AuctionItemRepository(DbSet<AuctionItem> auctionItems) : IAuctionItemRepository
+public class AuctionItemRepository(AuctionDbContext dbContext) : IAuctionItemRepository
 {
-    public async Task Add(AuctionItem auctionItem)
+    public async Task<AuctionItem> AddAsync(AuctionItem auctionItem)
     {
-        await auctionItems.AddAsync(auctionItem);
+        var auctionItemEntry = await dbContext.AuctionItems.AddAsync(auctionItem);
+        return auctionItemEntry.Entity;
     }
 
-    public async Task<AuctionItem> GetById(int id)
-    {
-        return (await auctionItems.FindAsync(id))!;
-    }
+    public async Task<AuctionItem> GetByIdAsync(int id) => (await dbContext.AuctionItems.FindAsync(id))!;
 
-    public async Task<IEnumerable<AuctionItem>> GetAll()
-    {
-        return await auctionItems.ToListAsync();
-    }
+    public async Task<IEnumerable<AuctionItem>> GetAllAsync() => await dbContext.AuctionItems.ToListAsync();
 
-    public async Task<IEnumerable<AuctionItem>> GetBySellerId(int sellerId)
-    {
-        return await auctionItems.Where(x => x.SellerId == sellerId).ToListAsync();
-    }
+    public async Task<IEnumerable<AuctionItem>> GetBySellerIdAsync(int sellerId) => await dbContext.AuctionItems.Where(x => x.SellerId == sellerId).ToListAsync();
 
-    public async Task<IEnumerable<AuctionItem>> GetByBidderId(int bidderId)
-    {
-        return await auctionItems.Where(x => x.Bids.Any(b => b.Id == bidderId)).ToListAsync();
-    }
+    public async Task<IEnumerable<AuctionItem>> GetByBidderIdAsync(int bidderId) => 
+        await dbContext.AuctionItems.Where(x => x.Bids.Any(b => b.Id == bidderId)).ToListAsync();
 
-    public async Task Update(AuctionItem auctionItem)
+    public async Task<AuctionItem> UpdateAsync(AuctionItem auctionItem)
     {
-        var item = await auctionItems.FindAsync(auctionItem.Id);
+        var item = await dbContext.AuctionItems.FindAsync(auctionItem.Id);
         if (item is null)
         {
-            return;
+            return auctionItem;
         }
 
         item.Title = auctionItem.Title;
@@ -46,14 +38,19 @@ public class AuctionItemRepository(DbSet<AuctionItem> auctionItems) : IAuctionIt
         item.EndTime = auctionItem.EndTime;
         item.Seller = auctionItem.Seller;
         item.SellerId = auctionItem.SellerId;
+
+        var auctionItemEntry = dbContext.AuctionItems.Update(item);
+
+        return auctionItemEntry.Entity;
     }
 
-    public async Task Delete(int id)
+    public async Task DeleteAsync(int id)
     {
-        var item = await auctionItems.FindAsync(id);
+        var item = await dbContext.AuctionItems.FindAsync(id);
         if (item is not null)
         {
-            auctionItems.Remove(item);
+            dbContext.AuctionItems.Remove(item);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

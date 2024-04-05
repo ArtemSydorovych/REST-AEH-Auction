@@ -16,6 +16,6 @@ public static class InfrastructureServiceExtensions
             options.UseNpgsql(configuration.GetConnectionString("AuctionDb"));
         });
         
-        services.AddSingleton<IAuctionItemRepository, AuctionItemRepository>();
+        services.AddScoped<IAuctionItemRepository, AuctionItemRepository>();
     }
 }

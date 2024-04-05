@@ -4,12 +4,12 @@ namespace AuctionDomain.Interfaces;
 
 public interface IAuctionItemRepository
 {
-    Task Add(AuctionItem auctionItem);
-    Task<AuctionItem> GetById(int id);
-    Task<IEnumerable<AuctionItem>> GetAll();
-    Task<IEnumerable<AuctionItem>> GetBySellerId(int sellerId);
-    Task<IEnumerable<AuctionItem>> GetByBidderId(int bidderId);
-    Task Update(AuctionItem auctionItem);
-    Task Delete(int id);
+    Task<AuctionItem> AddAsync(AuctionItem auctionItem);
+    Task<AuctionItem> GetByIdAsync(int id);
+    Task<IEnumerable<AuctionItem>> GetAllAsync();
+    Task<IEnumerable<AuctionItem>> GetBySellerIdAsync(int sellerId);
+    Task<IEnumerable<AuctionItem>> GetByBidderIdAsync(int bidderId);
+    Task<AuctionItem> UpdateAsync(AuctionItem auctionItem);
+    Task DeleteAsync(int id);
     
 }
