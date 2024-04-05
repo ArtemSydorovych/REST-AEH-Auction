@@ -2,7 +2,6 @@
 using AuctionDomain.Entities;
 using AuctionDomain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Auction.Infrastructure.Repositories;
 

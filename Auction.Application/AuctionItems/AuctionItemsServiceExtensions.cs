@@ -5,7 +5,6 @@ using Auction.Application.AuctionItems.Queries.GetAllAuctionItems;
 using Auction.Application.AuctionItems.Queries.GetAuctionItem;
 using Auction.Application.AuctionItems.Queries.GetAuctionItemsByBidder;
 using Auction.Application.AuctionItems.Queries.GetAuctionItemsBySeller;
-using Auction.Application.Dtos;
 using AuctionDomain.Entities;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

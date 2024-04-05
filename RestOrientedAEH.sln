@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Api", "Auction.Api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auction.Domain", "Auction.Domain\Auction.Domain.csproj", "{92878546-6985-40A2-A1EB-FBD807AD014D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{83C983A8-BC6E-499B-9CDF-05FB98FFDDCF}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{BE71CDC0-ECE1-4C7C-A68A-2877C163DA3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Startup", "Users.Startup\Users.Startup.csproj", "{5F02E5D3-9CBA-4486-B0C4-6C3EE31ACEDF}"

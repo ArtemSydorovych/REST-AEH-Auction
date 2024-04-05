@@ -1,5 +1,4 @@
-﻿using Auction.Infrastructure.Converters;
-using Auction.Infrastructure.Persistence.Postgres.Configurations;
+﻿using Auction.Infrastructure.Persistence.Postgres.Configurations;
 using AuctionDomain.Entities;
 using Microsoft.EntityFrameworkCore;
 
