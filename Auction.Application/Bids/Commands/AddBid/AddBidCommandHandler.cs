@@ -7,21 +7,19 @@ namespace Auction.Application.Bids.Commands.AddBid;
 
 public sealed class AddBidCommandHandler(
     IBidRepository repository,
-    IAuctionItemRepository auctionItemRepository,
-    IUserRepository userRepository)
+    IAuctionItemRepository auctionItemRepository)
     : IRequestHandler<AddBidCommand, Bid>
 {
 
     public async Task<Bid> Handle(AddBidCommand request, CancellationToken cancellationToken)
     {
         var auctionItem = await auctionItemRepository.GetByIdAsync(request.BidDto.AuctionItemId);
-        var bidder = await userRepository.GetByIdAsync(request.BidDto.BidderId);
 
         var bid = new Bid
         {
             AuctionItem = auctionItem,
             Amount = new Money(request.BidDto.Amount),
-            Bidder = bidder,
+            BidderId = request.BidDto.BidderId,
             Timestamp = DateTime.Now
         };
 

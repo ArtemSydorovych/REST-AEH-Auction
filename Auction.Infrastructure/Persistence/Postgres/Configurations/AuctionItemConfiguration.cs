@@ -13,10 +13,8 @@ public static partial class ModelBuilderExtensions
             .HasKey(x => x.Id);
 
         modelBuilder.Entity<AuctionItem>()
-            .HasOne(item => item.Seller)
-            .WithMany(user => user.AuctionItems)
-            .HasForeignKey(item => item.SellerId)
-            .OnDelete(DeleteBehavior.Restrict);  
+            .Property(item => item.SellerId)
+            .HasColumnType("integer");
         
         modelBuilder.Entity<AuctionItem>()
             .Property(item => item.Title)

@@ -2,4 +2,4 @@
 
 namespace Auction.Application.Dtos;
 
-public sealed record BidDto(AuctionItem AuctionItem, User Bidder, decimal Amount, DateTime Timestamp);
+public sealed record BidDto(AuctionItem AuctionItem, int BidderId, decimal Amount, DateTime Timestamp);

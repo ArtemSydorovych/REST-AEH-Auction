@@ -1,51 +1,61 @@
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Users.Application.Commands;
+using Users.Application.Dtos;
+using Users.Application.Queries;
 
 namespace WebApplication1.Controllers;
 
 [Authorize]
 [ApiController]
 [Route("[controller]")]
-public class UsersController : ControllerBase
+public class UsersController(ISender mediator) : ControllerBase
 {
-    [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDto model)
+    [HttpPost("register")]
+    public async Task<IActionResult> RegisterUser(RegisterUserCommand command)
     {
-        var user = await userManager.FindByNameAsync(model.Username);
-        if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
+        var result = await mediator.Send(command);
+        
+        if (result.Succeeded)
         {
-            var authClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            };
-
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]));
-
-            var token = new JwtSecurityToken(
-                expires: DateTime.Now.AddHours(3),
-                claims: authClaims,
-                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-            );
-
-            return Ok(new
-            {
-                token = new JwtSecurityTokenHandler().WriteToken(token),
-                expiration = token.ValidTo
-            });
+            return Ok(result);
         }
-        return Unauthorized();
+
+        foreach (var error in result.Errors)
+        {
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
+
+        return BadRequest(ModelState);
     }
     
-    [HttpPost]
-    public IActionResult AddUser(UserDto userDto) { /* Implement user addition */ }
-
-    [HttpPut("{id}")]
-    public IActionResult EditUser(int id, UserDto userDto) { /* Implement user editing */ }
-
-    [HttpDelete("{id}")]
-    public IActionResult DeleteUser(int id) { /* Implement user deletion */ }
+    
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers(GetUsersQuery query)
+    {
+        var users = await mediator.Send(query);
+        return Ok(users);
+    }
 
     [HttpGet("{id}")]
-    public IActionResult GetUser(int id) { /* Implement getting user info */ }
+    public async Task<ActionResult<UserDto>> GetUser([FromQuery]GetUserQuery query)
+    {
+        var user = await mediator.Send(query);
+        return Ok(user);
+    }
+    
+    [HttpPut("{id}")]
+    public async Task<IActionResult> EditUser([FromBody] EditUserCommand command)
+    {
+        await mediator.Send(command);
+        return NoContent();
+    }
+
+    [HttpDelete("{command}")]
+    public async Task<IActionResult> DeleteUser([FromBody]DeleteUserCommand command)
+    {
+        await mediator.Send(command);
+        return NoContent();
+    }
 }

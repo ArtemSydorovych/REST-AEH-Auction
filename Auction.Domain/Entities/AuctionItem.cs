@@ -10,7 +10,6 @@ public sealed record AuctionItem
     public Money StartPrice = new(0);
     public DateTime StartTime = DateTime.MinValue;
     public DateTime EndTime = DateTime.MinValue;
-    public User Seller = User.DefaultUser();
     public int SellerId = 0;
     public readonly List<Bid> Bids = new();
     

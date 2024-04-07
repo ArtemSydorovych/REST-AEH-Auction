@@ -35,7 +35,6 @@ public class AuctionItemRepository(AuctionDbContext dbContext) : IAuctionItemRep
         item.StartPrice = auctionItem.StartPrice;
         item.StartTime = auctionItem.StartTime;
         item.EndTime = auctionItem.EndTime;
-        item.Seller = auctionItem.Seller;
         item.SellerId = auctionItem.SellerId;
 
         var auctionItemEntry = dbContext.AuctionItems.Update(item);
